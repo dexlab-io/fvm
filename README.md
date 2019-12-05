@@ -72,8 +72,7 @@ function sendTokensAndExecute(
 
 This method transfers the tokens to the MoneyProxy and executes a batch of actions in the context of the MoneyProxy.
 
-// TODO consider using the registry to fetch contracts so they can be updated by the FIQ DAO.
-
+// TODO consider using the registry to fetch contracts so they can be updated by the Pie DAO.
 // TODO add documentation about possible fees for this system.
 
 
@@ -83,7 +82,7 @@ Actions were previously referenced to as Partials. After some consideration and 
 
 Actions are stateless by default, the state they do use is passed as a parameter and the output of a action is returned by the action function and passed along to the next one. This concept is often referred to as functional programming and is widely uses in redux which manages state in a similar manner.
 
-If an Action relies on other contracts these are fetched from the Registry at runtime to allow for upgrading of these contracts by the FIQ DAO.
+If an Action relies on other contracts these are fetched from the Registry at runtime to allow for upgrading of these contracts by the Pie DAO.
 
 Actions can append to the shared state or modify existing entries.
 
@@ -102,7 +101,7 @@ The in memory state is passed as a bytes32 array(_state) and the params(_params)
 
 #### fee
 
-The amount of fee to be charged for a specific action is saved inside the contract. This amount is expressed in FIQ tokens.
+The amount of fee to be charged for a specific action is saved inside the contract. This amount is expressed in PIE tokens.
 
 // TODO consider using a registry to make this fee dynamic
 
@@ -125,9 +124,7 @@ function setAddress(string _contractName) public
 function setAddressByHash(bytes32 _hashedName) external
 ```
 
-
 // TODO consider to create a generalized Registry which acts like a global key value store.
-
 
 ### Whitelist
 
@@ -138,7 +135,7 @@ The whitelist keeps track off the Action contracts. We use the generic openzeppe
 
 In case a user makes a mistake and sends tokens or ETH directly to one of the contracts they can be saved by the DAO via the TokenSaver. The TokenSaver is only used in emergency situations
 
-// TODO consider to implement triggers to have a IFTTT like experience.
+// TODO consider to implement triggers to have a IFTTT like experience, maybe via Gelato?
 
 
 ## Credits
